@@ -32,20 +32,20 @@ def convert_weight(value: float, from_unit: str, to_unit: str) -> float:
 def convert_temperature(value: float, from_unit: str, to_unit: str) -> float:
     if from_unit == to_unit:
         return value
-    elif from_unit == "Celsius":
-        if to_unit == "Fahrenheit": 
+    elif from_unit == "celsius":
+        if to_unit == "fahrenheit": 
             return (value * 9/5) + 32
-        if to_unit == "Kelvin": 
+        if to_unit == "kelvin": 
             return value + 273.15
-    elif from_unit == "Fahrenheit":
-        if to_unit == "Celsius": 
+    elif from_unit == "fahrenheit":
+        if to_unit == "celsius": 
             return (value - 32) * 5/9
-        if to_unit == "Kelvin": 
+        if to_unit == "kelvin": 
             return (value - 32) * 5/9 + 273.15
-    elif from_unit == "Kelvin":
-        if to_unit == "Celsius": 
+    elif from_unit == "kelvin":
+        if to_unit == "celsius": 
             return value - 273.15
-        if to_unit == "Fahrenheit": 
+        if to_unit == "fahrenheit": 
             return (value - 273.15) * 9/5 + 32
     else:
         raise ValueError("Invalid target temperature unit specified.")

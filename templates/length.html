@@ -4,11 +4,11 @@
 <form method="POST" action="/length">
     <div class="form-group">
         <label for="value">Value to convert</label>
-        <input type="text" id="value" name="{{ value }}" placeholder="Enter number..." required>
+        <input type="text" id="value" name="value" value="{{ value }}" placeholder="Enter number..." required>
     </div>
     <div class="form-group">
         <label for="from_unit">From:</label>
-        <select id="from_unit" name=""from_unit>
+        <select id="from_unit" name="from_unit">
             {% for unit in units %}
             <option value="{{ unit }}" {% if unit == from_unit %}selected{% endif %}>{{ unit.capitalize() }}</option>
             {% endfor %}
