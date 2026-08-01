@@ -45,10 +45,13 @@ unit_converter/
 ```bash
 git clone [https://github.com/YOUR_USERNAME/unit-converter.git](https://github.com/YOUR_USERNAME/unit-converter.git)
 cd unit-converter
+```
 ```bash
 python3 -m venv venv
 source venv/bin/activate
+```
 ```bash
 pip install -r requirements.txt
+```
 ```bash
 python app.py
