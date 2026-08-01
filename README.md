@@ -43,7 +43,7 @@ unit_converter/
 
 ### 1. Clone the repository
 ```bash
-git clone [https://github.com/YOUR_USERNAME/unit-converter.git](https://github.com/YOUR_USERNAME/unit-converter.git)
+git clone [https://github.com/HimanshuBhamaniya/Unit-converter.git](https://github.com/HimanshuBhamaniya/Unit-converter.git)
 cd unit-converter
 ```
 ```bash
