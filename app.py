@@ -1,0 +1,53 @@
+from flask import Flask, render_template, request
+from converter import convert_length, convert_weight, convert_temperature, LENGTH_RATIOS, WEIGHT_RATIOS
+
+app = Flask(__name__)
+
+TEMPERATURE_UNITS = ['celsius', 'fahrenheit', 'kelvin']
+
+def process_conversion_request(category: str, convert_func, available_units: list):
+    result = None
+    error = None
+
+    val_input = request.form.get('value', '')
+    from_unit = request.form.get('from_unit', available_units[0])
+    to_unit = request.form.get('to_unit', available_units[1 if len(available_units) > 1 else 0])
+
+    if request.method == 'POST':
+        try:
+            numeric_value = float(val_input)
+            calc_result = convert_func(numeric_value, from_unit, to_unit)
+            result = round(calc_result, 6)
+        except ValueError:
+            error = "Please enter a valid numeric value."
+        except Exception as e:
+            error = f"An unexpected error occurred: {str(e)}"
+
+    return {
+        'category': category,
+        'units': available_units,
+        'value': val_input,
+        'from_unit': from_unit,
+        'to_unit': to_unit,
+        'result': result,
+        'error': error
+    }
+
+@app.route('/')
+@app.route('/length', methods=['GET', 'POST'])
+def length():
+    ctx = process_conversion_request('Length', convert_length, list(LENGTH_RATIOS.keys()))
+    return render_template('length.html', **ctx)
+
+@app.route('/weight', methods=['GET', 'POST'])
+def weight():
+    ctx = process_conversion_request('Weight', convert_weight, list(WEIGHT_RATIOS.keys()))
+    return render_template('weight.html', **ctx)
+
+@app.route('/temperature', methods=['GET', 'POST'])
+def temperature():
+    ctx = process_conversion_request('Temperature', convert_temperature, TEMPERATURE_UNITS)
+    return render_template('temperature.html', **ctx)
+
+if __name__ == '__main__':
+    app.run(debug=True)
