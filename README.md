@@ -46,12 +46,17 @@ unit_converter/
 git clone [https://github.com/HimanshuBhamaniya/Unit-converter.git](https://github.com/HimanshuBhamaniya/Unit-converter.git)
 cd unit-converter
 ```
+
+### 2. Create a virtual environment and activate it
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
+### 3. Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
+### 4. Run the script
 ```bash
 python app.py
+```
